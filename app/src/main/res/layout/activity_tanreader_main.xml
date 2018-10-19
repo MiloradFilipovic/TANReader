@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TANReaderMainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_tanreader_main" />
+
+    <ImageView
+        android:id="@+id/iv_appLogo"
+        android:layout_width="185dp"
+        android:layout_height="227dp"
+        android:layout_gravity="bottom|center_horizontal|center"
+        android:contentDescription="@string/str_logo_description"
+        android:cropToPadding="false"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="center_horizontal"
+        app:layout_dodgeInsetEdges="none"
+        app:srcCompat="@drawable/tan_reader_logo_l" />
+
+    <LinearLayout
+        android:id="@+id/controls_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimaryLight"
+        android:clipChildren="false"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingTop="2dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="2dp"
+        android:weightSum="3"
+        app:layout_anchor="@id/include"
+        app:layout_anchorGravity="center">
+
+        <Spinner
+            android:id="@+id/column_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/column_values" />
+
+        <Spinner
+            android:id="@+id/row_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:entries="@array/row_values" />
+
+        <Button
+            android:id="@+id/btn_read"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:onClick="readButtonHandler"
+            android:text="@string/btn_go_text"
+            android:textColor="@color/colorPrimaryLight" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/result_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        android:weightSum="6"
+        app:layout_anchor="@id/controls_layout"
+        app:layout_anchorGravity="bottom">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_weight="3"
+            android:gravity="end"
+            android:lines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp" />
+
+        <ImageButton
+            android:id="@+id/btn_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/btn_copy_desc"
+            android:onClick="copyButtonHandler"
+            app:srcCompat="@drawable/copy_icon" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
